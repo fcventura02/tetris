@@ -14,5 +14,22 @@ function drawSquare(y, x, color) {
     ctx.strokeStyle = defaultBorder;
   }
 
-	ctx.strokeRect(x * SQ, y * SQ, SQ, SQ);
+  ctx.strokeRect(x * SQ, y * SQ, SQ, SQ);
+}
+
+function randomPiece() {
+  const randomPieceNumber = Math.floor(Math.random() * PIECES.length);
+  return new Piece(PIECES[randomPieceNumber][0], PIECES[randomPieceNumber][1]);
+}
+
+function drop() {
+  const now = Date.now();
+  const delta = now - dropStart;
+
+  if (delta > speed) {
+    piece.moveDow();
+    dropStart = Date.now();
+  }
+
+  requestAnimationFrame(drop);
 }
