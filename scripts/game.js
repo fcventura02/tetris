@@ -3,7 +3,7 @@ const ctx = cvs.getContext("2d");
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
-const ROW = 20;
+const ROW = 19;
 const COL = 10;
 const SQ = 30;
 const defaultColor = "#111";
