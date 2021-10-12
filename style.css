@@ -1,0 +1,40 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-size: 1rem;
+}
+
+body{
+	background-color: #333;
+	display: flex;
+	flex-wrap: wrap;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+}
+
+canvas{
+	display: block;
+	margin:  0 auto;
+}
+
+section{
+	width: 100%;
+	max-width: 310px;
+	margin:  0 auto;
+	margin-top: 8px;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: 'Press Start 2P', cursive;
+	text-align: center;
+}
+
+section p{
+	padding: 4px 2px;
+	margin: 4px 0;
+}
+
+#score, #speed{
+	display: inline-block;
+}
