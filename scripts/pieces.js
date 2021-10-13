@@ -35,6 +35,38 @@ class Piece {
     this.fill(defaultColor);
   }
 
+  moveLeft() {
+    if (!this.collision(-1, 0, this.activePiece)) {
+      this.unDraw();
+      this.x--;
+      this.draw();
+    }
+  }
+  moveRight() {
+    if (!this.collision(1, 0, this.activePiece)) {
+      this.unDraw();
+      this.x++;
+      this.draw();
+    }
+  }
+  rotate() {
+    let nextPattern = this.piece[(this.pieceN + 1) % this.piece.length];
+    let kick = 0;
+    if (this.collision(0, 0, nextPattern)) {
+      if (this.x > COL / 2) {
+        kick = 1;
+      }
+    }
+
+    if (!this.collision(kick, 0, nextPattern)) {
+      this.unDraw();
+      this.x += kick;
+      this.pieceN = (this.pieceN + 1) % this.piece.length;
+      this.activePiece = this.piece[this.pieceN];
+      this.draw();
+    }
+  }
+
   moveDow() {
     if (!this.collision(0, 1, this.activePiece)) {
       this.unDraw();

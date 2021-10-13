@@ -36,3 +36,4 @@ const PIECES = [
 let piece = randomPiece();
 
 drop();
+document.addEventListener("keydown", control)
