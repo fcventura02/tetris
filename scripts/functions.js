@@ -5,6 +5,8 @@ function drawBoard() {
       drawSquare(currentRow, currentCol, currentSquareColor);
     }
   }
+  scoreElement.innerText = score;
+  speedElement.innerText = speed;
 }
 
 function drawSquare(y, x, color) {
@@ -55,4 +57,17 @@ function control(event) {
 
   const movePiece = moveFunctions[event.code];
   movePiece();
+}
+
+function updateRowAndScore(row) {
+  for (let y = row; y > 1; y--) {
+    for (let currentCol = 0; currentCol < COL; currentCol++) {
+      board[y][currentCol] = board[y - 1][currentCol];
+    }
+  }
+
+  for (let currentCol = 0; currentCol < COL; currentCol++) {
+    board[0][currentCol] = defaultColor;
+  }
+  score += 10;
 }

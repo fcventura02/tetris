@@ -112,5 +112,17 @@ class Piece {
         board[this.y + currentRow][this.x + currentCol] = this.color;
       }
     }
+
+    for (let currentRow = 0; currentRow < ROW; currentRow++) {
+      let isRowFull = true;
+      for (let currentCol = 0; currentCol < COL; currentCol++) {
+        const currentSquareColor = board[currentRow][currentCol];
+        isRowFull = isRowFull && currentSquareColor !== defaultColor;
+      }
+      if (isRowFull) {
+        updateRowAndScore(currentRow);
+      }
+    }
+    drawBoard();
   }
 }
