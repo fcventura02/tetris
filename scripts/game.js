@@ -3,12 +3,13 @@ const ctx = cvs.getContext("2d");
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
-const ROW = 20;
+const ROW = 19;
 const COL = 10;
 const SQ = 30;
 const defaultColor = "#111";
 const defaultBorder = "rgba(255,255,255,0.1)";
 
+let canMove = true;
 let speed = 500;
 let dropStart = Date.now();
 let score = 0;
@@ -36,3 +37,4 @@ const PIECES = [
 let piece = randomPiece();
 
 drop();
+document.addEventListener("keydown", control);
