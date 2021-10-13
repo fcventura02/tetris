@@ -95,6 +95,7 @@ class Piece {
   }
 
   lok() {
+    canMove = false;
     for (
       let currentRow = 0;
       currentRow < this.activePiece.length;
@@ -107,7 +108,10 @@ class Piece {
       ) {
         if (!this.activePiece[currentRow][currentCol]) continue;
 
-        if (this.y + currentRow < 0) break;
+        if (this.y + currentRow < 0) {
+          gameOver()
+          break;
+        }
 
         board[this.y + currentRow][this.x + currentCol] = this.color;
       }
@@ -124,5 +128,6 @@ class Piece {
       }
     }
     drawBoard();
+    canMove = true;
   }
 }
