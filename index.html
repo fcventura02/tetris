@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tetris</title>
+    <link
+      rel="shortcut icon"
+      href="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/000000/external-tetris-video-games-those-icons-lineal-color-those-icons.png"
+      type="image/x-icon"
+    />
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,9 +21,16 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div style="display: flex">
+    <header>
+      <img
+        src="https://fontmeme.com/permalink/211012/19dd7ca336330b99b50901de20a40dd9.png"
+        alt="Tetris"
+        width="80%"
+      />
+    </header>
+    <main class="game" style="display: flex">
       <canvas id="tetris" width="220" height="440"></canvas>
-      <section>
+      <section class="infoGame">
         <div>
           <p>Next:</p>
           <canvas id="nextPiece" width="88" height="88"></canvas>
@@ -26,7 +38,13 @@
         <p>Score: <span id="score"></span></p>
         <p>Speed: <span id="speed"></span></p>
       </section>
-    </div>
+    </main>
+    <section class="controls">
+      <button id="rotate"><img src="./img/rotation.png" alt="" /></button>
+      <button id="left"><img src="img/left.png" alt="" /></button>
+      <button id="down"><img src="img/down.png" alt="" /></button>
+      <button id="right"><img src="img/right.png" alt="" /></button>
+    </section>
     <script src="./scripts/pieces.js"></script>
     <script src="./scripts/skeletons.js"></script>
     <script src="./scripts/functions.js"></script>

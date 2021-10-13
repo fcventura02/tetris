@@ -8,10 +8,28 @@
 body{
 	background-color: #333;
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	flex-wrap: wrap;
 	color: #fff;
 	padding: 0;
 	margin: 0;
+}
+
+header img{
+	display: block;
+	max-width: 768px;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+.game{
+	padding: 10px 5px;
+}
+
+.game .infoGame{
+	margin: 10px 5px;
 }
 
 canvas{
@@ -37,4 +55,13 @@ section p{
 
 #score, #speed{
 	display: inline-block;
+}
+
+.controls{
+	margin: 20px 5px 10px;
+}
+
+.controls button{
+	background: none;
+	border: none;
 }

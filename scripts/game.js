@@ -54,3 +54,7 @@ let nextPiece = randomPiece();
 let piece = randomPiece();
 
 document.addEventListener("keydown", control);
+document.getElementById("rotate").addEventListener("click", ()=>control({code: "ArrowUp"}))
+document.getElementById("left").addEventListener("click", ()=>control({code: "ArrowLeft"}))
+document.getElementById("down").addEventListener("click", ()=>control({code: "ArrowDown"}))
+document.getElementById("right").addEventListener("click", ()=>control({code: "ArrowRight"}))
