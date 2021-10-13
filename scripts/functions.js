@@ -5,6 +5,14 @@ function drawBoard() {
       drawSquare(currentRow, currentCol, currentSquareColor);
     }
   }
+
+  for (let currentRow = 0; currentRow < previewRow; currentRow++) {
+    for (let currentCol = 0; currentCol < previewCol; currentCol++) {
+      const currentSquareColor = previewBoard[currentRow][currentCol];
+      previewDrawSquare(currentRow, currentCol, currentSquareColor);
+    }
+  }
+
   scoreElement.innerText = score;
   speedElement.innerText = speed;
 }
@@ -19,6 +27,16 @@ function drawSquare(y, x, color) {
   ctx.strokeRect(x * SQ, y * SQ, SQ, SQ);
 }
 
+function previewDrawSquare(y, x, color) {
+  previewPieceCtx.fillStyle = color;
+  previewPieceCtx.fillRect(x * SQ, y * SQ, SQ, SQ);
+  if (color === "#333") {
+    previewPieceCtx.strokeStyle = "rgba(255,255,255,0)";
+  }
+
+  previewPieceCtx.strokeRect(x * SQ, y * SQ, SQ, SQ);
+}
+
 function randomPiece() {
   const randomPieceNumber = Math.floor(Math.random() * PIECES.length);
   return new Piece(PIECES[randomPieceNumber][0], PIECES[randomPieceNumber][1]);
@@ -28,6 +46,7 @@ function drop() {
   const now = Date.now();
   const delta = now - dropStart;
 
+  nextPiece.preview();
   if (delta > speed) {
     piece.moveDow();
     dropStart = Date.now();
@@ -55,6 +74,9 @@ function control(event) {
     },
     ArrowDown() {
       piece.moveDow();
+    },
+    Enter() {
+      drop();
     },
   };
 
@@ -100,7 +122,7 @@ function resetGame() {
       board[currentRow][currentCol] = defaultColor;
     }
   }
-
+  nextPiece = randomPiece();
   piece = randomPiece();
   drawBoard();
 }

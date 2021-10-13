@@ -1,11 +1,19 @@
 const cvs = document.getElementById("tetris");
 const ctx = cvs.getContext("2d");
+
+const previewPiece = document.getElementById("nextPiece");
+const previewPieceCtx = previewPiece.getContext("2d");
+
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
-const ROW = 19;
+const previewRow = 4;
+const previewCol = 4;
+const previewSQ = 20;
+
+const ROW = 20;
 const COL = 10;
-const SQ = 30;
+const SQ = 22;
 const defaultColor = "#111";
 const defaultBorder = "rgba(255,255,255,0.1)";
 
@@ -22,6 +30,14 @@ for (let currentRow = 0; currentRow < ROW; currentRow++) {
   }
 }
 
+let previewBoard = []
+for (let currentRow = 0; currentRow < previewRow; currentRow++) {
+  previewBoard[currentRow] = [];
+  for (let currentCol = 0; currentCol < previewCol; currentCol++) {
+    previewBoard[currentRow][currentCol] = "#333";
+  }
+}
+
 drawBoard();
 
 const PIECES = [
@@ -34,7 +50,7 @@ const PIECES = [
   [J, "rgba(211, 84, 0,1.0)"],
 ];
 
+let nextPiece = randomPiece();
 let piece = randomPiece();
 
-drop();
 document.addEventListener("keydown", control);

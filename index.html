@@ -16,14 +16,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <canvas id="tetris" width="300" height="570"></canvas>
-    <section>
-      <p>Score: <span id="score"></span></p>
-      <p>Speed: <span id="speed"></span></p>
-    </section>
-    <script src="./scripts/pieces.js" ></script>
-    <script src="./scripts/skeletons.js" ></script>
-    <script src="./scripts/functions.js" ></script>
-    <script src="./scripts/game.js" ></script>
+    <div style="display: flex">
+      <canvas id="tetris" width="220" height="440"></canvas>
+      <section>
+        <div>
+          <p>Next:</p>
+          <canvas id="nextPiece" width="88" height="88"></canvas>
+        </div>
+        <p>Score: <span id="score"></span></p>
+        <p>Speed: <span id="speed"></span></p>
+      </section>
+    </div>
+    <script src="./scripts/pieces.js"></script>
+    <script src="./scripts/skeletons.js"></script>
+    <script src="./scripts/functions.js"></script>
+    <script src="./scripts/game.js"></script>
   </body>
 </html>

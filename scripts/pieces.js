@@ -27,12 +27,39 @@ class Piece {
       }
     }
   }
+
+  previewFill(color) {
+    for (
+      let currentRow = 0;
+      currentRow < this.activePiece.length;
+      currentRow++
+    ) {
+      for (
+        let currentCol = 0;
+        currentCol < this.activePiece.length;
+        currentCol++
+      ) {
+        if (this.activePiece[currentRow][currentCol]) {
+          previewDrawSquare(currentRow, currentCol, color);
+        }
+      }
+    }
+  }
+
   draw() {
     this.fill(this.color);
   }
 
   unDraw() {
     this.fill(defaultColor);
+  }
+
+  previewDraw() {
+    this.previewFill(this.color);
+  }
+
+  previewUnDraw() {
+    this.previewFill("#333");
   }
 
   moveLeft() {
@@ -75,7 +102,13 @@ class Piece {
       return;
     }
     this.lok();
-    piece = randomPiece();
+    piece = nextPiece;
+    nextPiece = randomPiece();
+  }
+
+  preview() {
+    this.previewUnDraw();
+    this.previewDraw();
   }
 
   collision(x, y, futurePiece) {
@@ -109,7 +142,7 @@ class Piece {
         if (!this.activePiece[currentRow][currentCol]) continue;
 
         if (this.y + currentRow < 0) {
-          gameOver()
+          gameOver();
           break;
         }
 
