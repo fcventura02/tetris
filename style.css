@@ -44,6 +44,22 @@ header img {
   text-align: center;
 }
 
+.game .infoGame #score {
+  color: rgba(231, 76, 60, 1);
+}
+
+.game .infoGame #level {
+  color: rgba(52, 152, 219, 1);
+}
+
+.game .infoGame #speed {
+  color: rgba(241, 196, 15, 1);
+}
+
+.game .infoGame #record {
+  color: rgba(211, 84, 0, 1);
+}
+
 #tetris {
   display: block;
 }
@@ -105,22 +121,22 @@ button {
   display: flex;
   align-items: center;
   color: rgba(46, 204, 113, 1);
-  transition: color .5s;
-
+  transition: color 0.5s;
 }
 
 #enter img,
 #resetGame img {
   margin: 4px;
-  transition: filter .5s;
-
+  transition: filter 0.5s;
 }
 
-#enter:hover, #resetGame:hover{
+#enter:hover,
+#resetGame:hover {
   color: rgb(53, 165, 100);
 }
 
-#enter:hover img, #resetGame img{
+#enter:hover img,
+#resetGame img {
   -webkit-filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg)
     saturate(1000%) contrast(0.8);
   filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg)

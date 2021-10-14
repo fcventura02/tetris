@@ -16,6 +16,7 @@ function drawBoard() {
   scoreElement.innerText = score;
   speedElement.innerText = speed;
   levelElement.innerText = level;
+  recordElement.innerText = localStorage.getItem("record") || 0;
 }
 
 function drawSquare(y, x, color) {
@@ -116,6 +117,12 @@ function gameOver() {
   modal.childNodes[1].style.display = "none";
   modal.childNodes[3].style.display = "flex";
   document.getElementById("score-result").innerText = score;
+  let record = localStorage.getItem("record") || 0;
+  if (record < score) {
+    localStorage.setItem("record", score);
+    record = score;
+  }
+  document.getElementById("score-record").innerText = record;
   isGameOver = true;
 
   document

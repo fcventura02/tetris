@@ -7,6 +7,7 @@ const previewPieceCtx = previewPiece.getContext("2d");
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 const levelElement = document.getElementById("level");
+const recordElement = document.getElementById("record");
 
 const modal = document.getElementById("modal");
 
