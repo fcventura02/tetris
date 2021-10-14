@@ -21,11 +21,13 @@ body {
 header img {
   display: block;
   max-width: 768px;
+  max-height: 50px;
   margin: 0 auto;
   padding: 10px 0;
 }
 
 .game {
+  width: 100%;
   padding: 10px 5px;
 }
 
@@ -69,8 +71,8 @@ button {
   text-align: center;
   background-color: rgba(25, 25, 25, 0.8);
   width: 100%;
-  height: calc(100vh - 50px);
-  overflow: hidden;
+  height: calc(100% - 50px);
+  overflow: auto;
   position: absolute;
   top: 50px;
   left: 0;
@@ -92,7 +94,7 @@ button {
 }
 
 .gameOver {
-	height: calc(90% - 58px);
+	height: calc(100% - 50px);
   display: none;
   justify-content: center;
   align-items: center;
@@ -119,25 +121,28 @@ button {
 .close {
   display: block;
   height: 0;
+  opacity: 0;
   animation: close-modal 1s normal;
 }
 
 @keyframes open-modal {
   0% {
     display: block !important;
+    overflow: hidden;
     height: 0;
     opacity: 0;
   }
   100% {
     display: block;
-		height: calc(100% - 56px);
+    overflow: auto;
+		height: calc(100% - 50px);
     opacity: 1;
   }
 }
 
 @keyframes close-modal {
   0% {
-    height: 100%;
+    height: calc(100% - 50px);
     opacity: 1;
   }
   100% {
