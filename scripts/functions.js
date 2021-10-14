@@ -15,6 +15,7 @@ function drawBoard() {
 
   scoreElement.innerText = score;
   speedElement.innerText = speed;
+  levelElement.innerText = level;
 }
 
 function drawSquare(y, x, color) {
@@ -89,7 +90,7 @@ function control(event) {
   } catch (error) {}
 }
 
-function updateRowAndScore(row) {
+function updateRowAndScore(row, combo) {
   canMove = false;
   for (let y = row; y > 1; y--) {
     for (let currentCol = 0; currentCol < COL; currentCol++) {
@@ -100,10 +101,12 @@ function updateRowAndScore(row) {
   for (let currentCol = 0; currentCol < COL; currentCol++) {
     board[0][currentCol] = defaultColor;
   }
-  score += 10;
-  if (speed > 100) {
-    speed -= 20;
-  }
+  score += 10 * combo;
+  if (score >= 100 * level)
+    if (speed > 100) {
+      speed -= 20;
+      level += 1;
+    }
   canMove = true;
 }
 
@@ -126,6 +129,7 @@ function resetGame() {
   speed = 500;
   dropStart = Date.now();
   score = 0;
+  level = 1;
   isGameOver = false;
 
   board = [];

@@ -6,6 +6,7 @@ const previewPieceCtx = previewPiece.getContext("2d");
 
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
+const levelElement = document.getElementById("level");
 
 const modal = document.getElementById("modal");
 
@@ -26,6 +27,7 @@ let canMove = true;
 let speed = 500;
 let dropStart = Date.now();
 let score = 0;
+let level = 1;
 
 let board = [];
 for (let currentRow = 0; currentRow < ROW; currentRow++) {

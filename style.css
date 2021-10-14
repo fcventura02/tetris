@@ -7,7 +7,7 @@
 }
 
 body {
-	min-height: 100vh;
+  min-height: 100vh;
   background-color: #333;
   display: flex;
   flex-direction: column;
@@ -29,26 +29,26 @@ header img {
 .game {
   width: 100%;
   padding: 10px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .game .infoGame {
   margin: 10px 5px;
-  width: 100%;
+  padding: 5px;
   max-width: 310px;
-  margin: 0 auto;
   margin-top: 8px;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
 }
 
-canvas {
+#tetris {
   display: block;
-  margin: 0 auto;
 }
 
 p {
-  margin: 4px;
   line-height: calc(100% + 14px);
 }
 
@@ -58,6 +58,12 @@ p {
 }
 
 .controls {
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
   margin: 20px auto 10px;
 }
 
@@ -71,7 +77,9 @@ button {
   text-align: center;
   background-color: rgba(25, 25, 25, 0.8);
   width: 100%;
-  height: calc(100% - 50px);
+  height: 100%;
+
+  padding: 10px 5px;
   overflow: auto;
   position: absolute;
   top: 50px;
@@ -82,35 +90,61 @@ button {
   font-size: 0.89rem;
 }
 
-#enter, #resetGame {
+.instruction {
+  height: calc(100% - 50px);
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#enter,
+#resetGame {
   margin: 10px auto;
   display: flex;
   align-items: center;
-	color: rgba(46, 204, 113,1.0);
+  color: rgba(46, 204, 113, 1);
+  transition: color .5s;
+
 }
 
-#enter img, #resetGame img{
+#enter img,
+#resetGame img {
   margin: 4px;
+  transition: filter .5s;
+
+}
+
+#enter:hover, #resetGame:hover{
+  color: rgb(53, 165, 100);
+}
+
+#enter:hover img, #resetGame img{
+  -webkit-filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg)
+    saturate(1000%) contrast(0.8);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg)
+    saturate(1000%) contrast(0.8);
 }
 
 .gameOver {
-	height: calc(100% - 50px);
+  height: calc(100% - 50px);
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.gameOver h2{
-	color: firebrick;
+.gameOver h2 {
+  color: firebrick;
 }
 
-.gameOver  span{
-	margin-top: 5px;
-	margin-bottom: 5px;
+.gameOver span {
+  margin-top: 5px;
+  margin-bottom: 5px;
   font-size: 1.2rem;
-	font-weight: bold;
-	color: coral;
+  font-weight: bold;
+  color: coral;
 }
 
 .open {
@@ -135,7 +169,6 @@ button {
   100% {
     display: block;
     overflow: auto;
-		height: calc(100% - 50px);
     opacity: 1;
   }
 }
@@ -148,5 +181,19 @@ button {
   100% {
     height: 0;
     opacity: 0;
+  }
+}
+
+@media (min-width: 700px) {
+  #tetris {
+    zoom: 1.5;
+  }
+  .infoGame {
+    width: 25%;
+  }
+  .infoGame,
+  .controls,
+  .instruction {
+    zoom: 1.5;
   }
 }
