@@ -140,13 +140,14 @@ class Piece {
         currentCol++
       ) {
         if (!this.activePiece[currentRow][currentCol]) continue;
-
         if (this.y + currentRow < 0) {
-          gameOver();
           break;
         }
-
         board[this.y + currentRow][this.x + currentCol] = this.color;
+      }
+      if (this.y + currentRow < 0) {
+        gameOver();
+        break;
       }
     }
 

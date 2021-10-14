@@ -7,6 +7,11 @@ const previewPieceCtx = previewPiece.getContext("2d");
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
+const modal = document.getElementById("modal");
+
+let animation = null;
+let isGameOver = false;
+
 const previewRow = 4;
 const previewCol = 4;
 const previewSQ = 20;
@@ -30,7 +35,7 @@ for (let currentRow = 0; currentRow < ROW; currentRow++) {
   }
 }
 
-let previewBoard = []
+let previewBoard = [];
 for (let currentRow = 0; currentRow < previewRow; currentRow++) {
   previewBoard[currentRow] = [];
   for (let currentCol = 0; currentCol < previewCol; currentCol++) {
@@ -54,7 +59,18 @@ let nextPiece = randomPiece();
 let piece = randomPiece();
 
 document.addEventListener("keydown", control);
-document.getElementById("rotate").addEventListener("click", ()=>control({code: "ArrowUp"}))
-document.getElementById("left").addEventListener("click", ()=>control({code: "ArrowLeft"}))
-document.getElementById("down").addEventListener("click", ()=>control({code: "ArrowDown"}))
-document.getElementById("right").addEventListener("click", ()=>control({code: "ArrowRight"}))
+document
+  .getElementById("enter")
+  .addEventListener("click", () => control({ code: "Enter" }));
+document
+  .getElementById("rotate")
+  .addEventListener("click", () => control({ code: "ArrowUp" }));
+document
+  .getElementById("left")
+  .addEventListener("click", () => control({ code: "ArrowLeft" }));
+document
+  .getElementById("down")
+  .addEventListener("click", () => control({ code: "ArrowDown" }));
+document
+  .getElementById("right")
+  .addEventListener("click", () => control({ code: "ArrowRight" }));

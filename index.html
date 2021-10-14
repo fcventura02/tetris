@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,6 +45,36 @@
       <button id="down"><img src="img/down.png" alt="" /></button>
       <button id="right"><img src="img/right.png" alt="" /></button>
     </section>
+    <nav id="modal" class="modal open">
+      <section class="instruction">
+        <div>
+          <p>Click para girar a peça</p>
+          <img src="img/rotation.png" alt="" />
+        </div>
+        <div>
+          <p>Click para mover a peça para a esquerda</p>
+          <img src="img/left.png" alt="" />
+        </div>
+        <div>
+          <p>Click para mover a peça para baixo</p>
+          <img src="img/down.png" alt="" />
+        </div>
+        <div>
+          <p>Click para mover a peça para a direita</p>
+          <img src="img/right.png" alt="" />
+        </div>
+        <p>Pressione enter para iniciar</p>
+        <p>ou click em iniciar</p>
+        <button id="enter"><img src="img/start.png" alt="" /> Iniciar</button>
+      </section>
+      <section class="gameOver">
+        <h2>Game Over!</h2>
+        <p>Sua pontuação final:</p>
+        <span id="score-result"></span>
+        <p>Jogar novamente ?</p>
+        <button id="resetGame"><img src="img/start.png" alt="" /> Jogar</button>
+      </section>
+    </nav>
     <script src="./scripts/pieces.js"></script>
     <script src="./scripts/skeletons.js"></script>
     <script src="./scripts/functions.js"></script>

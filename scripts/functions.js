@@ -45,43 +45,48 @@ function randomPiece() {
 function drop() {
   const now = Date.now();
   const delta = now - dropStart;
-
-  nextPiece.preview();
   if (delta > speed) {
+    nextPiece.preview();
     piece.moveDow();
     dropStart = Date.now();
   }
-
-  requestAnimationFrame(drop);
+  if (!isGameOver) {
+    animation = requestAnimationFrame(drop);
+  } else {
+    cancelAnimationFrame(animation);
+  }
 }
 
 function control(event) {
   if (!canMove) {
     return false;
   }
-  const moveFunctions = {
-    ArrowLeft() {
-      piece.moveLeft();
-      dropStart = Date.now();
-    },
-    ArrowRight() {
-      piece.moveRight();
-      dropStart = Date.now();
-    },
-    ArrowUp() {
-      piece.rotate();
-      dropStart = Date.now();
-    },
-    ArrowDown() {
-      piece.moveDow();
-    },
-    Enter() {
-      drop();
-    },
-  };
-
-  const movePiece = moveFunctions[event.code];
-  movePiece();
+  try {
+    const moveFunctions = {
+      ArrowLeft() {
+        piece.moveLeft();
+        dropStart = Date.now();
+      },
+      ArrowRight() {
+        piece.moveRight();
+        dropStart = Date.now();
+      },
+      ArrowUp() {
+        piece.rotate();
+        dropStart = Date.now();
+      },
+      ArrowDown() {
+        piece.moveDow();
+      },
+      Enter() {
+        document.getElementById("modal").classList.remove("open");
+        document.getElementById("modal").classList.add("close");
+        window.setTimeout(() => drop(), 1000);
+      },
+    };
+    const movePiece = moveFunctions[event.code];
+    movePiece();
+  } catch (error) {}
 }
 
 function updateRowAndScore(row) {
@@ -103,17 +108,25 @@ function updateRowAndScore(row) {
 }
 
 function gameOver() {
-  let warning = confirm("Game over! Continue?");
+  modal.classList.add("open");
+  modal.classList.remove("close");
+  modal.childNodes[1].style.display = "none";
+  modal.childNodes[3].style.display = "flex";
+  document.getElementById("score-result").innerText = score;
+  isGameOver = true;
 
-  if (warning) {
-    resetGame();
-  }
+  document
+    .getElementById("resetGame")
+    .addEventListener("click", () => resetGame());
 }
 
 function resetGame() {
+  modal.classList.remove("open");
+  modal.classList.add("close");
   speed = 500;
   dropStart = Date.now();
   score = 0;
+  isGameOver = false;
 
   board = [];
   for (let currentRow = 0; currentRow < ROW; currentRow++) {
@@ -125,4 +138,5 @@ function resetGame() {
   nextPiece = randomPiece();
   piece = randomPiece();
   drawBoard();
+  drop();
 }
