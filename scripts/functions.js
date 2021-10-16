@@ -41,7 +41,10 @@ function previewDrawSquare(y, x, color) {
 
 function randomPiece() {
   const randomPieceNumber = Math.floor(Math.random() * PIECES.length);
-  return new Piece(PIECES[randomPieceNumber][0], PIECES[randomPieceNumber][1]);
+  return new Piece(
+    PIECES[randomPieceNumber][0],
+    PIECES[randomPieceNumber][level === 3 ? 2 : 1]
+  );
 }
 
 function drop() {
@@ -102,12 +105,21 @@ function updateRowAndScore(row, combo) {
   for (let currentCol = 0; currentCol < COL; currentCol++) {
     board[0][currentCol] = defaultColor;
   }
+  console.log(piece.color)
   score += 10 * combo;
   if (score >= 100 * level)
     if (speed > 100) {
       speed -= 20;
       level += 1;
     }
+    if(level === 3 ){
+    for (let y = row; y > 1; y--) {
+      for (let currentCol = 0; currentCol < COL; currentCol++) {
+        if(board[y][currentCol] !== defaultColor)
+        board[y][currentCol] = piece.color;
+      }
+    }
+  }
   canMove = true;
 }
 

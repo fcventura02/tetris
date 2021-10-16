@@ -151,7 +151,7 @@ class Piece {
       }
     }
 
-    let countComboRow = 0
+    let countComboRow = 0;
     for (let currentRow = 0; currentRow < ROW; currentRow++) {
       let isRowFull = true;
       for (let currentCol = 0; currentCol < COL; currentCol++) {
@@ -163,7 +163,7 @@ class Piece {
         updateRowAndScore(currentRow, countComboRow);
       }
     }
-    
+
     drawBoard();
     canMove = true;
   }
